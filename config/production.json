@@ -1,0 +1,6 @@
+{
+    "name": "Archivo de determinación - production",
+    "mail": {
+        "host": "prod-mail-server"
+    }   
+}

@@ -1,0 +1,10 @@
+{
+ "name": "Archivo de determinación - development",
+ "DB_HOST": "localhost",
+ "DB_USER": "root",
+ "DB_PWD": "1234qwer",
+ "mail": {
+     "host": "dev-mail-server"
+ },
+ "jwtPrivateKey": "privateKey@d373rm1n@ci0n" 
+}
