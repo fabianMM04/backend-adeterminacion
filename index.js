@@ -1,6 +1,8 @@
 const debug = require('debug')('app:startup');
 const config = require('config');
 const peticiones = require('./routes/peticion');
+const archivodeterminacion = require('./routes/asignaradeterminacion');
+const abogado = require('./routes/asignarabogado');
 const auth = require('./routes/auth');
 const users = require('./routes/users');
 const express = require('express');
@@ -14,6 +16,8 @@ app.use(helmet());
 app.use('/api/peticiones', peticiones);
 app.use('/api/users', users);
 app.use('/api/auth', auth);
+app.use('/api/abogados', abogado);
+app.use('/api/archivodeterminaciones', archivodeterminacion);
 console.log("prueba ", config.get('name'))
 if(!config.get('jwtPrivateKey')){
     console.error('FATAL ERROR: jwtPrivateKey no está definido');
