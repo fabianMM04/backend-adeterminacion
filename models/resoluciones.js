@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const resolucionesSchema = new mongoose.Schema({
-    reolucion_no: Number,
+    resolucion_no: Number,
     no_expediente: Number,
     referencia_catastral: String,
     direccion: String,
