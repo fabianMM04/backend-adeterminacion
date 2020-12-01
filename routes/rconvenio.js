@@ -17,7 +17,7 @@ router.get('/',  (req, res) =>{
                 });
             }else{
                 res.status(200).send({
-                    asignacionesAD
+                    resolucionconvenio: asignacionesAD
                 });
             }
         }
@@ -30,7 +30,7 @@ router.get('/:id', async (req, res) =>{
     let resolucionconvenio = await ResolucionConvenio.findById(id);
     if(!resolucionconvenio) return res.status(404).send('La resolución de convenio no fue encontrada.');
      
-    res.send({resolucionconvenio});
+    res.status(200).send({resolucionconvenio});
 });
 
 router.post('/', async(req, res) => {
@@ -53,7 +53,7 @@ router.post('/', async(req, res) => {
     
     resolucionconvenio = await resolucionconvenio.save();
     if(!resolucionconvenio) return res.status(404).send("No se guardó la resolución de convenio!");
-    res.send({resolucionconvenio});
+    res.status(200).send({resolucionconvenio});
 });
 
 router.put('/:id', async (req, res) =>{
@@ -68,7 +68,7 @@ router.delete('/:id', async (req, res) =>{
     let id = req.params.id;
     let resolucionconvenio = await ResolucionConvenio.findByIdAndRemove(id);
     if(!resolucionconvenio) return res.status(404).send('La resolución de convenio no se encontró.');
-    res.send({resolucionconvenio});
+    res.status(200).send({resolucionconvenio});
 });
 
 

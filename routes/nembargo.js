@@ -17,7 +17,7 @@ router.get('/',  (req, res) =>{
                 });
             }else{
                 res.status(200).send({
-                    asignacionesAD
+                   nembargo: asignacionesAD
                 });
             }
         }

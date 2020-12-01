@@ -15,6 +15,6 @@ const resolucionesSchema = new mongoose.Schema({
     fecha_up: Date
 })
 
-const Resoluciones = mongoose.model('resoluciones', resolucionesSchema);
+const Resoluciones = mongoose.model('resolucione', resolucionesSchema);
 
 module.exports = Resoluciones;

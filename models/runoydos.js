@@ -14,6 +14,6 @@ const resolucionUnoyDosSchema = new mongoose.Schema({
     fecha_up: Date
 })
 
-const ResolucionUnoyDos = mongoose.model('runoydos', resolucionUnoyDosSchema);
+const ResolucionUnoyDos = mongoose.model('runoydo', resolucionUnoyDosSchema);
 
 module.exports = ResolucionUnoyDos;

@@ -17,7 +17,10 @@ router.get('/',  (req, res) =>{
                 });
             }else{
                 res.status(200).send({
-                    asignacionesAD
+                    mandamientopago:asignacionesAD
+
+
+
                 });
             }
         }
@@ -59,6 +62,7 @@ router.post('/', async(req, res) => {
 router.put('/:id', async (req, res) =>{
 
     let id = req.params.id;
+    console.log("backend update------------: ", id, req.body)
     let mandamientopago = await MandamientoPago.findByIdAndUpdate(id, req.body, {new: true});
     if(!mandamientopago) return res.status(404).send('El mandamiento de pago no se encontró.');    
     res.status(200).send({mandamientopago});
@@ -66,9 +70,10 @@ router.put('/:id', async (req, res) =>{
 
 router.delete('/:id', async (req, res) =>{
     let id = req.params.id;
+    console.log("id eliminar")
     let mandamientopago = await MandamientoPago.findByIdAndRemove(id);
     if(!mandamientopago) return res.status(404).send('El mandamiento de pago no se encontró.');
-    res.send({mandamientopago});
+    res.status(200).send({mandamientopago});
 });
 
 
