@@ -62,7 +62,6 @@ router.post('/', async(req, res) => {
 router.put('/:id', async (req, res) =>{
 
     let id = req.params.id;
-    console.log("backend update------------: ", id, req.body)
     let mandamientopago = await MandamientoPago.findByIdAndUpdate(id, req.body, {new: true});
     if(!mandamientopago) return res.status(404).send('El mandamiento de pago no se encontró.');    
     res.status(200).send({mandamientopago});
