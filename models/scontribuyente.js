@@ -9,6 +9,7 @@ const solicitudContribuyenteSchema = new mongoose.Schema({
     matricula: String,
     notificacion: String,
     codigo_no: Number,
+    usuario: String,
     fecha_cre: Date,
     fecha_up: Date
 })

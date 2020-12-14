@@ -25,6 +25,28 @@ router.get('/',  (req, res) =>{
     
 });
 
+router.get('/users/:id',  (req, res) =>{
+    let id = req.params.id;
+    Resolucion.find({ usuario: id }).exec((err, asignacionesAD) =>{
+        if(err){
+            res.status(500).send({
+                message: "Request error"
+            });
+        }else{
+            if(!asignacionesAD){
+                res.status(404).send({
+                    message: "No se han encontrado resoluciones."
+                });
+            }else{
+                res.status(200).send({
+                    resolucion: asignacionesAD
+                });
+            }
+        }
+    });
+    
+});
+
 router.get('/:id', async (req, res) =>{
     let id = req.params.id;
     let resolucion = await Resolucion.findById(id);
@@ -46,6 +68,7 @@ router.post('/', async(req, res) => {
         fecha: req.body.fecha,
         notificacion: req.body.notificacion,
         ciudad: req.body.ciudad,
+        usuario: req.body.usuario,
         fecha_cre: moment().format('YYYY MM DD HH:mm:ss'),
         fecha_up: moment().format('YYYY MM DD HH:mm:ss')
     });

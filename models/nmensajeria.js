@@ -6,10 +6,11 @@ const notificacionMensajeriaSchema = new mongoose.Schema({
     direccion: String,
     firma: String,
     id: String,
+    usuario: String,
     fecha_cre: Date,
     fecha_up: Date
 })
 
-const NotificacionMensajeria = mongoose.model('nembargo', notificacionMensajeriaSchema);
+const NotificacionMensajeria = mongoose.model('nmensajeria', notificacionMensajeriaSchema);
 
 module.exports = NotificacionMensajeria;

@@ -28,6 +28,31 @@ router.get('/',  (req, res) =>{
     
 });
 
+router.get('/users/:id',  (req, res) =>{
+    let id = req.params.id;
+    MandamientoPago.find({ usuario: id }).exec((err, asignacionesAD) =>{
+        if(err){
+            res.status(500).send({
+                message: "Request error"
+            });
+        }else{
+            if(!asignacionesAD){
+                res.status(404).send({
+                    message: "No se han encontrado mandamientos de pagos."
+                });
+            }else{
+                res.status(200).send({
+                    mandamientopago:asignacionesAD
+
+
+
+                });
+            }
+        }
+    });
+    
+});
+
 router.get('/:id', async (req, res) =>{
     let id = req.params.id;
     let mandamientopago = await MandamientoPago.findById(id);
@@ -50,6 +75,7 @@ router.post('/', async(req, res) => {
         valor: req.body.valor,
         madamiento_no: req.body.madamiento_no,
         notificacion: req.body.notificacion,
+        usuario: req.body.usuario,
         fecha_cre: moment().format('YYYY MM DD HH:mm:ss'),
         fecha_up: moment().format('YYYY MM DD HH:mm:ss')
     });

@@ -10,7 +10,7 @@ router.post('/', async(req, res) => {
     const validPassword = await bcrypt.compare(req.body.contrasena, user.contrasena);
     if (!validPassword) return res.status(400).send({message: 'correo o contraseña invalida.'});
     const token = user.generateAuthToken();
-    res.status(200).send({token});  
+    res.status(200).send({token, user});  
     
 });
 

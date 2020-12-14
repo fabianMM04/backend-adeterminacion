@@ -25,6 +25,28 @@ router.get('/',  (req, res) =>{
     
 });
 
+router.get('/users/:id',  (req, res) =>{
+    let id = req.params.id;
+    Runoydos.find({ usuario: id }).exec((err, asignacionesAD) =>{
+        if(err){
+            res.status(500).send({
+                message: "Request error"
+            });
+        }else{
+            if(!asignacionesAD){
+                res.status(404).send({
+                    message: "No se han encontrado resoluciones 2001 y 2002."
+                });
+            }else{
+                res.status(200).send({
+                    runoydos: asignacionesAD
+                });
+            }
+        }
+    });
+    
+});
+
 router.get('/:id', async (req, res) =>{
     let id = req.params.id;
     let runoydos = await Runoydos.findById(id);
@@ -45,6 +67,7 @@ router.post('/', async(req, res) => {
         fecha: req.body.fecha,
         ciudad: req.body.ciudad,
         matricula: req.body.matricula,
+        usuario: req.body.usuario,
         fecha_cre: moment().format('YYYY MM DD HH:mm:ss'),
         fecha_up: moment().format('YYYY MM DD HH:mm:ss')
     });

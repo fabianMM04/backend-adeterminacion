@@ -13,6 +13,7 @@ const mandamientoPagoSchema = new mongoose.Schema({
     mandamiento_no: String,
     notificacion: String,
     fecha_cre: Date,
+    usuario: String,
     fecha_up: Date
 })
 

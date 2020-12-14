@@ -10,6 +10,7 @@ const resolucionEmbargoSchema = new mongoose.Schema({
     direccion: String,
     matricula: String,
     valor: Number,
+    usuario: String,
     fecha_cre: Date,
     fecha_up: Date
 })
