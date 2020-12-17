@@ -27,7 +27,7 @@ router.get('/',  (req, res) =>{
 
 router.get('/users/:id',  (req, res) =>{
     let id = req.params.id;
-    Nmensajeria.find({ usuario: id }).exec((err, asignacionesAD) =>{
+    Nmensajeria.find({ cedula: id }).exec((err, asignacionesAD) =>{
         if(err){
             res.status(500).send({
                 message: "Request error"
@@ -66,7 +66,7 @@ router.post('/', async(req, res) => {
         direccion: req.body.direccion,
         firma: req.body.firma,
         id: req.body.id,
-        usuario: req.body.usuario,
+        cedula: req.body.usuario,
         fecha_cre: moment().format('YYYY MM DD HH:mm:ss'),
         fecha_up: moment().format('YYYY MM DD HH:mm:ss')
     });

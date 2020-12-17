@@ -27,7 +27,7 @@ router.get('/',  (req, res) =>{
 
 router.get('/users/:id',  (req, res) =>{
     let id = req.params.id;
-    Resolucion.find({ usuario: id }).exec((err, asignacionesAD) =>{
+    Resolucion.find({ cedula: id }).exec((err, asignacionesAD) =>{
         if(err){
             res.status(500).send({
                 message: "Request error"
@@ -68,7 +68,7 @@ router.post('/', async(req, res) => {
         fecha: req.body.fecha,
         notificacion: req.body.notificacion,
         ciudad: req.body.ciudad,
-        usuario: req.body.usuario,
+        cedula: req.body.usuario,
         fecha_cre: moment().format('YYYY MM DD HH:mm:ss'),
         fecha_up: moment().format('YYYY MM DD HH:mm:ss')
     });

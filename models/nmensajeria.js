@@ -6,7 +6,7 @@ const notificacionMensajeriaSchema = new mongoose.Schema({
     direccion: String,
     firma: String,
     id: String,
-    usuario: String,
+    cedula: String,
     fecha_cre: Date,
     fecha_up: Date
 })

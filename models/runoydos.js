@@ -10,7 +10,7 @@ const resolucionUnoyDosSchema = new mongoose.Schema({
     ciudad: String,
     vigencias: Date,
     matricula: String,
-    usuario: String,
+    cedula: String,
     fecha_cre: Date,
     fecha_up: Date
 })

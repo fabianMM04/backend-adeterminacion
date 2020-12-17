@@ -27,7 +27,7 @@ router.get('/',  (req, res) =>{
 
 router.get('/users/:id',  (req, res) =>{
     let id = req.params.id;
-    ResolucionEmbargo.find({ usuario: id }).exec((err, asignacionesAD) =>{
+    ResolucionEmbargo.find({ cedula: id }).exec((err, asignacionesAD) =>{
         if(err){
             res.status(500).send({
                 message: "Request error"
@@ -67,7 +67,6 @@ router.post('/', async(req, res) => {
         direccion: req.body.direccion,
         matricula: req.body.matricula,
         valor: req.body.valor,
-        usuario: req.body.usuario,
         fecha_cre: moment().format('YYYY MM DD HH:mm:ss'),
         fecha_up: moment().format('YYYY MM DD HH:mm:ss')
     });

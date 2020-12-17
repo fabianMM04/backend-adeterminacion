@@ -11,7 +11,7 @@ const resolucionesSchema = new mongoose.Schema({
     fecha: Date,
     notificacion: String,
     ciudad: String,
-    usuario: String,
+    cedula: String,
     fecha_cre: Date,
     fecha_up: Date
 })

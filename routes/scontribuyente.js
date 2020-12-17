@@ -27,7 +27,7 @@ router.get('/',  (req, res) =>{
 
 router.get('/users/:id',  (req, res) =>{
     let id = req.params.id;
-    SolicitudContribuyente.find({ usuario: id }).exec((err, asignacionesAD) =>{
+    SolicitudContribuyente.find({ cedula: id }).exec((err, asignacionesAD) =>{
         if(err){
             res.status(500).send({
                 message: "Request error"
@@ -58,16 +58,16 @@ router.get('/:id', async (req, res) =>{
 router.post('/', async(req, res) => {
 
     let solicitudContribuyente = new SolicitudContribuyente({
-        reolucion_no: req.body.reolucion_no,
-        no_expediente: req.body.no_expediente,
+        notificacion: req.body.notificacion,
+        codigo_no: req.body.codigo_no,
         referencia_catastral: req.body.referencia_catastral,
-        direccion: req.body.direccion,
+        //direccion: req.body.direccion,
         propietario: req.body.propietario,
         vigencias: req.body.vigencias,
         fecha: req.body.fecha,
         ciudad: req.body.ciudad,
         matricula: req.body.matricula,
-        usuario: req.body.usuario,
+        cedula: req.body.cedula,
         fecha_cre: moment().format('YYYY MM DD HH:mm:ss'),
         fecha_up: moment().format('YYYY MM DD HH:mm:ss')
     });
