@@ -70,7 +70,8 @@ router.post('/', async(req, res) => {
         ciudad: req.body.ciudad,
         cedula: req.body.usuario,
         fecha_cre: moment().format('YYYY MM DD HH:mm:ss'),
-        fecha_up: moment().format('YYYY MM DD HH:mm:ss')
+        fecha_up: moment().format('YYYY MM DD HH:mm:ss'),
+        status: 'ACTIVO'
     });
     
     resolucion = await resolucion.save();

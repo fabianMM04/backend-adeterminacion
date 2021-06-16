@@ -13,7 +13,8 @@ const resolucionesSchema = new mongoose.Schema({
     ciudad: String,
     cedula: String,
     fecha_cre: Date,
-    fecha_up: Date
+    fecha_up: Date,
+    status: String
 })
 
 const Resoluciones = mongoose.model('resolucione', resolucionesSchema);

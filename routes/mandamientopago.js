@@ -77,7 +77,8 @@ router.post('/', async(req, res) => {
         notificacion: req.body.notificacion,
         cedula: req.body.usuario,
         fecha_cre: moment().format('YYYY MM DD HH:mm:ss'),
-        fecha_up: moment().format('YYYY MM DD HH:mm:ss')
+        fecha_up: moment().format('YYYY MM DD HH:mm:ss'),
+        status: 'ACTIVO'
     });
     
     mandamientopago = await mandamientopago.save();

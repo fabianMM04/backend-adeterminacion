@@ -45,7 +45,8 @@ router.post('/', async(req, res) => {
         vigencias: req.body.vigencias,
         valor: req.body.valor,
         fecha_cre: moment().format('YYYY MM DD HH:mm:ss'),
-        fecha_up: moment().format('YYYY MM DD HH:mm:ss')
+        fecha_up: moment().format('YYYY MM DD HH:mm:ss'),
+        status: 'ACTIVO'
     });
     
     notificacionEmbargo = await notificacionEmbargo.save();

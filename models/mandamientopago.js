@@ -14,7 +14,8 @@ const mandamientoPagoSchema = new mongoose.Schema({
     notificacion: String,
     fecha_cre: Date,
     cedula: String,
-    fecha_up: Date
+    fecha_up: Date,
+    status: String
 })
 
 const MandamientoPago = mongoose.model('mandamientopago', mandamientoPagoSchema);

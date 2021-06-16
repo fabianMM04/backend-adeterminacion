@@ -9,7 +9,8 @@ const solicitudAbogadoSchema = new mongoose.Schema({
     referencia_catastral: String,
     abogado_solicitante: String,
     fecha_cre: Date,
-    fecha_up: Date
+    fecha_up: Date,
+    status: String
 })
 
 const SolicitudAbogado = mongoose.model('sabogado', solicitudAbogadoSchema);

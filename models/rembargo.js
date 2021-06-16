@@ -11,7 +11,8 @@ const resolucionEmbargoSchema = new mongoose.Schema({
     matricula: String,
     valor: Number,
     fecha_cre: Date,
-    fecha_up: Date
+    fecha_up: Date,
+    status: String
 })
 
 const ResolucionEmbargo = mongoose.model('rembargo', resolucionEmbargoSchema);

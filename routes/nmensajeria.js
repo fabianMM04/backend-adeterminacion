@@ -68,7 +68,8 @@ router.post('/', async(req, res) => {
         id: req.body.id,
         cedula: req.body.usuario,
         fecha_cre: moment().format('YYYY MM DD HH:mm:ss'),
-        fecha_up: moment().format('YYYY MM DD HH:mm:ss')
+        fecha_up: moment().format('YYYY MM DD HH:mm:ss'),
+        status: 'ACTIVO'
     });
     
     nmensajeria = await nmensajeria.save();

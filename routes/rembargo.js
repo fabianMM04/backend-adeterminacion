@@ -68,7 +68,8 @@ router.post('/', async(req, res) => {
         matricula: req.body.matricula,
         valor: req.body.valor,
         fecha_cre: moment().format('YYYY MM DD HH:mm:ss'),
-        fecha_up: moment().format('YYYY MM DD HH:mm:ss')
+        fecha_up: moment().format('YYYY MM DD HH:mm:ss'),
+        status: 'ACTIVO'
     });
     
     resolucionembargo = await resolucionembargo.save();

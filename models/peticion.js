@@ -9,7 +9,8 @@ const peticionSchema = new mongoose.Schema({
     tipo_peticion: String,
     usu_contribuyente: {type: mongoose.Schema.ObjectId, ref: 'User'},
     fecha_cre: Date,
-    fecha_up: Date
+    fecha_up: Date,
+    status: String
 })
 
 const Peticion = mongoose.model('peticion', peticionSchema);

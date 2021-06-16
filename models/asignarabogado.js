@@ -6,7 +6,9 @@ const asignarAbogadoSchema = new mongoose.Schema({
     usu_abogado:{ type: mongoose.Schema.ObjectId, ref: 'User'} ,
     usu_recepcionista: {type: mongoose.Schema.ObjectId, ref: 'User'},
     fecha_cre: Date,
-    fecha_up: Date
+    fecha_up: Date,
+    status: String
+    
 })
 
 const AsignarAbogado = mongoose.model('asignarabogado', asignarAbogadoSchema);

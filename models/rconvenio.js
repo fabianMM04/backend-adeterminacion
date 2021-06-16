@@ -13,7 +13,8 @@ const resolucionConvenioSchema = new mongoose.Schema({
     notificacion: String,
     ciudad: String,
     fecha_cre: Date,
-    fecha_up: Date
+    fecha_up: Date,
+    status: String
 })
 
 const ResolucionConvenio = mongoose.model('resolconvenio', resolucionConvenioSchema);

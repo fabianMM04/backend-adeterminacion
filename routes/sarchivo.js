@@ -44,7 +44,8 @@ router.post('/', async(req, res) => {
         expediente_no: req.body.referencia_catastral,
         abogado_solicitante: req.body.abogado_solicitante,
         fecha_cre: moment().format('YYYY MM DD HH:mm:ss'),
-        fecha_up: moment().format('YYYY MM DD HH:mm:ss')
+        fecha_up: moment().format('YYYY MM DD HH:mm:ss'),
+        status: 'ACTIVO'
     });
     
     solicitudArchivo = await solicitudArchivo.save();

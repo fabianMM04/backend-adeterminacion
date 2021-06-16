@@ -69,7 +69,8 @@ router.post('/', async(req, res) => {
         matricula: req.body.matricula,
         cedula: req.body.cedula,
         fecha_cre: moment().format('YYYY MM DD HH:mm:ss'),
-        fecha_up: moment().format('YYYY MM DD HH:mm:ss')
+        fecha_up: moment().format('YYYY MM DD HH:mm:ss'),
+        status: 'ACTIVO'
     });
     
     solicitudContribuyente = await solicitudContribuyente.save();

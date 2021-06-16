@@ -12,7 +12,8 @@ const resolucionUnoyDosSchema = new mongoose.Schema({
     matricula: String,
     cedula: String,
     fecha_cre: Date,
-    fecha_up: Date
+    fecha_up: Date,
+    status: String
 })
 
 const ResolucionUnoyDos = mongoose.model('runoydo', resolucionUnoyDosSchema);

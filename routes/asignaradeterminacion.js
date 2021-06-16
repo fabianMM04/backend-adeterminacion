@@ -41,7 +41,8 @@ router.post('/', async(req, res) => {
         usu_abogado: req.body.usu_abogado,
         usu_ad: req.body.usu_ad,
         fecha_cre: moment().format('YYYY MM DD HH:mm:ss'),
-        fecha_up: moment().format('YYYY MM DD HH:mm:ss')
+        fecha_up: moment().format('YYYY MM DD HH:mm:ss'),
+        status: 'ACTIVO'
     });
     
     archivodeterminacion = await archivodeterminacion.save();

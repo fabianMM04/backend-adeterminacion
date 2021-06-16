@@ -43,7 +43,8 @@ router.post('/', async(req, res) => {
         tipo_peticion: req.body.tipo_peticion,
         usu_contribuyente: req.body.usu_contribuyente,
         fecha_cre: moment().format('YYYY MM DD HH:mm:ss'),
-        fecha_up: moment().format('YYYY MM DD HH:mm:ss')
+        fecha_up: moment().format('YYYY MM DD HH:mm:ss'),
+        status: 'ACTIVO'
     });
     
     peticion = await peticion.save();

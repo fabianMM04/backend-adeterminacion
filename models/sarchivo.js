@@ -9,7 +9,8 @@ const solicitudArchivoSchema = new mongoose.Schema({
     afuncionario_archivo: String,
     expediente_no: Number,
     fecha_cre: Date,
-    fecha_up: Date
+    fecha_up: Date,
+    status: String
 })
 
 const SolicitudArchivo = mongoose.model('sarchivo', solicitudArchivoSchema);

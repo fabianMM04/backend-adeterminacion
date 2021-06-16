@@ -6,7 +6,8 @@ const asignarADSchema = new mongoose.Schema({
     usu_abogado:{ type: mongoose.Schema.ObjectId, ref: 'User'} ,
     usu_ad: {type: mongoose.Schema.ObjectId, ref: 'User'},
     fecha_cre: Date,
-    fecha_up: Date
+    fecha_up: Date,
+    status: String
 })
 
 const AsignarADeterminacion= mongoose.model('asignaradeterminacion', asignarADSchema);

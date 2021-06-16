@@ -11,7 +11,8 @@ const solicitudContribuyenteSchema = new mongoose.Schema({
     codigo_no: Number,
     cedula: String,
     fecha_cre: Date,
-    fecha_up: Date
+    fecha_up: Date,
+    status: String
 })
 
 const SolicitudContribuyente = mongoose.model('scontribuyente', solicitudContribuyenteSchema);

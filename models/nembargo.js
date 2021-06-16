@@ -10,7 +10,8 @@ const notificacionEmbargoSchema = new mongoose.Schema({
     vigencias: Date,
     valor: Number,
     fecha_cre: Date,
-    fecha_up: Date
+    fecha_up: Date,
+    status: String
 })
 
 const NotificacionEmbargo = mongoose.model('nembargo', notificacionEmbargoSchema);
