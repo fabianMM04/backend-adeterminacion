@@ -5,7 +5,7 @@ const moment = require('moment');
 
 
 router.get('/',  (req, res) =>{
-    ResolucionEmbargo.find({}).exec((err, asignacionesAD) =>{
+    ResolucionEmbargo.find({}).exec(async(err, asignacionesAD) =>{
         if(err){
             res.status(500).send({
                 message: "Request error"
@@ -16,8 +16,13 @@ router.get('/',  (req, res) =>{
                     message: "No se han encontrado resoluciones de embargos."
                 });
             }else{
+                let activos = await ResolucionEmbargo.find({status: 'ACTIVO'})
+                let cerrados = await ResolucionEmbargo.find({status: 'CERRADO'})
                 res.status(200).send({
-                    rembargo: asignacionesAD
+                    rembargo: asignacionesAD,
+                    activos: activos.length,
+                    cerrados: cerrados.length,
+                    total: asignacionesAD.length
                 });
             }
         }

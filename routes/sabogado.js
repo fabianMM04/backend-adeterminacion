@@ -5,7 +5,7 @@ const moment = require('moment');
 
 
 router.get('/',  (req, res) =>{
-    SolicitudAbogado.find({}).exec((err, asignacionesAD) =>{
+    SolicitudAbogado.find({}).exec(async(err, asignacionesAD) =>{
         if(err){
             res.status(500).send({
                 message: "Request error"
@@ -16,8 +16,13 @@ router.get('/',  (req, res) =>{
                     message: "No se han encontrado solicitudes de abogado."
                 });
             }else{
+                let activos = await SolicitudAbogado.find({status: 'ACTIVO'})
+                let cerrados = await SolicitudAbogado.find({status: 'CERRADO'})
                 res.status(200).send({
-                    sabogado: asignacionesAD
+                    sabogado: asignacionesAD,
+                    activos: activos.length,
+                    cerrados: cerrados.length,
+                    total: asignacionesAD.length
                 });
             }
         }

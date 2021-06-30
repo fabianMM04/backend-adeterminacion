@@ -5,7 +5,7 @@ const moment = require('moment');
 
 
 router.get('/',  (req, res) =>{
-    Nmensajeria.find({}).exec((err, asignacionesAD) =>{
+    Nmensajeria.find({}).exec(async(err, asignacionesAD) =>{
         if(err){
             res.status(500).send({
                 message: "Request error"
@@ -16,8 +16,13 @@ router.get('/',  (req, res) =>{
                     message: "No se han encontrado notificación de mensajeria."
                 });
             }else{
+                let activos = await Nmensajeria.find({status: "ACTIVO"})
+                let cerrados = await Nmensajeria.find({status: "CERRADO"})
                 res.status(200).send({
-                    nmensajeria:asignacionesAD
+                    nmensajeria:asignacionesAD,
+                    activos: activos.length,
+                    cerrados: cerrados.length,
+                    total: asignacionesAD.length
                 });
             }
         }

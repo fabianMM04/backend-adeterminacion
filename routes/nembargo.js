@@ -5,7 +5,7 @@ const moment = require('moment');
 
 
 router.get('/',  (req, res) =>{
-    NotificacionEmbargo.find({}).exec((err, asignacionesAD) =>{
+    NotificacionEmbargo.find({}).exec(async(err, asignacionesAD) =>{
         if(err){
             res.status(500).send({
                 message: "Request error"
@@ -16,8 +16,13 @@ router.get('/',  (req, res) =>{
                     message: "No se han encontrado notificaciones de embargo."
                 });
             }else{
+                let activos = await NotificacionEmbargo.find({status: 'ACTIVO'})
+                let cerrados = await NotificacionEmbargo.find({status: 'CERRADO'})
                 res.status(200).send({
-                   nembargo: asignacionesAD
+                   nembargo: asignacionesAD,
+                   activos: activos.length,
+                   cerrados: cerrados.length,
+                   total: asignacionesAD.length
                 });
             }
         }

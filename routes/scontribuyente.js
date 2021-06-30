@@ -5,7 +5,7 @@ const moment = require('moment');
 
 
 router.get('/',  (req, res) =>{
-    SolicitudContribuyente.find({}).exec((err, asignacionesAD) =>{
+    SolicitudContribuyente.find({}).exec(async(err, asignacionesAD) =>{
         if(err){
             res.status(500).send({
                 message: "Request error"
@@ -16,8 +16,14 @@ router.get('/',  (req, res) =>{
                     message: "No se han encontrado solicitudes de contribuyentes."
                 });
             }else{
+
+                let activos = await SolicitudContribuyente.find({status: 'ACTIVO'})
+                let cerrados = await SolicitudContribuyente.find({status: 'CERRADO'})
                 res.status(200).send({
-                    scontribuyente: asignacionesAD
+                    scontribuyente: asignacionesAD,
+                    activos: activos.length,
+                    cerrados: cerrados.length,
+                    total: asignacionesAD.length
                 });
             }
         }

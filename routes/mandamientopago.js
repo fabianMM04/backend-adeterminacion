@@ -4,8 +4,8 @@ const  MandamientoPago  = require('../models/mandamientopago');
 const moment = require('moment');
 
 
-router.get('/',  (req, res) =>{
-    MandamientoPago.find({}).exec((err, asignacionesAD) =>{
+router.get('/',   (req, res) =>{
+    MandamientoPago.find({}).exec( async (err, asignacionesAD) =>{
         if(err){
             res.status(500).send({
                 message: "Request error"
@@ -16,11 +16,13 @@ router.get('/',  (req, res) =>{
                     message: "No se han encontrado mandamientos de pagos."
                 });
             }else{
+                let activo = await MandamientoPago.find({status: 'ACTIVO'})
+                let cerrado = await MandamientoPago.find({status: 'CERRADO'})
                 res.status(200).send({
-                    mandamientopago:asignacionesAD
-
-
-
+                    mandamientopago:asignacionesAD,
+                    activos: activo.length,
+                    cerrados: cerrado.length,
+                    total: asignacionesAD.length
                 });
             }
         }

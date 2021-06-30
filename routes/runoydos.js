@@ -5,7 +5,7 @@ const moment = require('moment');
 
 
 router.get('/',  (req, res) =>{
-    Runoydos.find({}).exec((err, asignacionesAD) =>{
+    Runoydos.find({}).exec(async(err, asignacionesAD) =>{
         if(err){
             res.status(500).send({
                 message: "Request error"
@@ -16,8 +16,13 @@ router.get('/',  (req, res) =>{
                     message: "No se han encontrado resoluciones 2001 y 2002."
                 });
             }else{
+                let activos = await Runoydos.find({status: 'ACTIVO'})
+                let cerrados = await Runoydos.find({status: 'CERRADO'})
                 res.status(200).send({
-                    runoydos: asignacionesAD
+                    runoydos: asignacionesAD,
+                    cerrados: cerrados.length,
+                    activos: activos.length,
+                    total: asignacionesAD.length
                 });
             }
         }

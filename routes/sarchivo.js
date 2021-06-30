@@ -5,7 +5,7 @@ const moment = require('moment');
 
 
 router.get('/',  (req, res) =>{
-    SolicitudArchivo.find({}).exec((err, asignacionesAD) =>{
+    SolicitudArchivo.find({}).exec(async(err, asignacionesAD) =>{
         if(err){
             res.status(500).send({
                 message: "Request error"
@@ -16,8 +16,13 @@ router.get('/',  (req, res) =>{
                     message: "No se han encontrado solicitudes de archivo."
                 });
             }else{
+                let activos = await SolicitudArchivo.find({status: 'ACTIVO'})
+                let cerrados = await SolicitudArchivo.find({status: 'CERRADO'})
                 res.status(200).send({
-                    sarchivo: asignacionesAD
+                    sarchivo: asignacionesAD,
+                    activos: activos.length,
+                    cerrados: cerrados.length,
+                    total: asignacionesAD.length
                 });
             }
         }
