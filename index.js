@@ -13,6 +13,11 @@ const runoydos = require('./routes/runoydos');
 const scontribuyente = require('./routes/scontribuyente');
 const sabogado = require('./routes/sabogado');
 const sarchivo = require('./routes/sarchivo');
+const historico = require('./routes/historico');
+const historicoseisonce = require('./routes/historicoseisonce');
+const historicoocho = require('./routes/historicoocho');
+
+
 
 
 const auth = require('./routes/auth');
@@ -56,6 +61,11 @@ app.use('/api/resolucionunoydos', runoydos);
 app.use('/api/scontribuyente', scontribuyente);
 app.use('/api/sabogado', sabogado);
 app.use('/api/sarchivo', sarchivo);
+app.use('/api/historicos', historico);
+app.use('/api/historicosseisonce', historicoseisonce);
+app.use('/api/historicosocho', historicoocho);
+
+
 
 
 console.log("prueba ", config.get('name'))
