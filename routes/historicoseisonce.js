@@ -38,7 +38,7 @@ router.get('/:id', async (req, res) =>{
 router.post('/', async(req, res) => {
 
     let historico = new Historico({
-        REFERENCIA: req.body.REF_CATASTRAL,
+        REFERENCIA: req.body.REFERENCIA,
         REF_CATASTRAL: req.body.REF_CATASTRAL,
         No_RESOLUCION: req.body.No_RESOLUCION,
         No_EXPEDIENTE: req.body.No_EXPEDIENTE,

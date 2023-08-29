@@ -44,7 +44,7 @@ router.post('/', async(req, res) => {
         No_EXPEDIENTE: req.body.No_EXPEDIENTE,
         FECHA: req.body.FECHA,
         VIG_DETERMINADAS: req.body.VIG_DETERMINADAS,
-        HOJA: req.body.GRUPO,
+        HOJA: req.body.HOJA,
         NOTIFICADO_DEVUELTO: req.body.NOTIFICADO_DEVUELTO,
         TOTAL_DETERMINADO: req.body.TOTAL_DETERMINADO,
     });
