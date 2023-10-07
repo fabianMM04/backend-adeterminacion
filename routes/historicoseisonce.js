@@ -2,7 +2,48 @@ const express = require('express');
 const router = express.Router();
 const  Historico  = require('../models/historico0611');
 const moment = require('moment');
+var multer = require('multer');
 
+var upload = multer({ dest: 'uploads/' });
+
+app.post('/', upload.single('file'), (req, res, next) => {
+    csv()
+    .fromFile(req.file.path)
+    .then((jsonObj)=>{
+        var historico = [];
+        for(var i = 0;i<jsonObj.length;i++){
+            var obj={};
+            obj.REFERENCIA=jsonObj[i]['REFERENCIA'];
+            obj.REF_CATASTRAL=jsonObj[i]['REF_CATASTRAL'];
+            obj.No_RESOLUCION=jsonObj[i]['No_RESOLUCION'];
+            obj.No_EXPEDIENTE=jsonObj[i]['No_EXPEDIENTE'];
+            obj.FECHA=jsonObj[i]['FECHA'];
+            obj.VIG_DETERMINADAS=jsonObj[i]['VIG_DETERMINADAS'];
+            obj.GRUPO=jsonObj[i]['GRUPO'];
+            obj.NOTIFICADO_DEVUELTO=jsonObj[i]['NOTIFICADO_DEVUELTO'];
+            obj.BUSQUEDA=jsonObj[i]['BUSQUEDA'];
+            obj.TOTAL_DETERMINADO=jsonObj[i]['TOTAL_DETERMINADO'];
+            obj.NO_IMAGE_SCANED=jsonObj[i]['NO_IMAGE_SCANED'];
+
+            historico.push(obj);
+        }
+        Historico.insertMany(historico).then(function(){
+            res.status(200).send({
+                message: "Successfully Uploaded!"
+            });
+        }).catch(function(error){
+            res.status(500).send({
+                message: "failure",
+                error
+            });
+        });
+    }).catch((error) => {
+        res.status(500).send({
+            message: "failure",
+            error
+        });
+    })
+});
 
 router.get('/',  (req, res) =>{
     Historico.find({}).exec(async(err, asignacionesAD) =>{
