@@ -6,7 +6,7 @@ var multer = require('multer');
 
 var upload = multer({ dest: 'uploads/' });
 
-app.post('/', upload.single('file'), (req, res, next) => {
+router.post('/upload_files', upload.single('file'), (req, res, next) => {
     csv()
     .fromFile(req.file.path)
     .then((jsonObj)=>{
